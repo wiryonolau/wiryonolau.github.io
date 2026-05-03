@@ -1,0 +1,1 @@
+import{a as e,t}from"./Container-Cym_PZWC.js";var n=e();function r(){return(0,n.jsxs)(t,{className:`mt-4`,children:[(0,n.jsx)(`h1`,{children:`Projects`}),(0,n.jsx)(`p`,{children:`My work here`})]})}export{r as default};
