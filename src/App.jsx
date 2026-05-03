@@ -1,5 +1,5 @@
 import {
-    createHashRouter,
+    createBrowserRouter,
     RouterProvider,
     Outlet,
     Link,
@@ -7,7 +7,7 @@ import {
 import { lazy } from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import Layout from "./layout/Layout";
-
+import { BreakpointProvider } from "./component/Breakpoint";
 // lazy pages
 const Home = lazy(() => import("./pages/Home"));
 const Projects = lazy(() => import("./pages/Projects"));
@@ -22,13 +22,17 @@ function ErrorPage() {
 }
 
 // router
-const router = createHashRouter([
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Outlet />,
+        children: [{ index: true, element: <Home /> }],
+    },
     {
         path: "/",
         element: <Layout />,
         errorElement: <ErrorPage />,
         children: [
-            { index: true, element: <Home /> },
             { path: "projects", element: <Projects /> },
             { path: "about", element: <About /> },
         ],
@@ -36,5 +40,9 @@ const router = createHashRouter([
 ]);
 
 export default function App() {
-    return <RouterProvider router={router} />;
+    return (
+        <BreakpointProvider>
+            <RouterProvider router={router} />
+        </BreakpointProvider>
+    );
 }
