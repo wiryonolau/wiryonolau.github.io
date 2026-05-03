@@ -1,0 +1,1 @@
+import{n as e,t}from"./index-DT6RFwOS.js";var n=e();function r(){return(0,n.jsxs)(t,{className:`mt-4`,children:[(0,n.jsx)(`h1`,{children:`About`}),(0,n.jsx)(`p`,{children:`About me`})]})}export{r as default};
