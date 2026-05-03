@@ -1,0 +1,1 @@
+import{n as e,t}from"./index-Co8gOmO-.js";var n=e();function r(){return(0,n.jsxs)(t,{className:`mt-4`,children:[(0,n.jsx)(`h1`,{children:`Home`}),(0,n.jsx)(`p`,{children:`Welcome to my portfolio`})]})}export{r as default};
