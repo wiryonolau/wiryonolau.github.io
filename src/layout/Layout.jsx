@@ -13,7 +13,7 @@ function Loading() {
 export default function Layout() {
     return (
         <>
-            <Navbar bg="dark" variant="dark">
+            <Navbar bg="primary" variant="dark">
                 <Container fluid className="px-3">
                     <Navbar.Brand as={Link} to="/">
                         Portfolio
@@ -22,11 +22,11 @@ export default function Layout() {
                         <Nav.Link as={Link} to="/">
                             Home
                         </Nav.Link>
+                        <Nav.Link as={Link} to="/blogs">
+                            Blogs
+                        </Nav.Link>
                         <Nav.Link as={Link} to="/projects">
                             Projects
-                        </Nav.Link>
-                        <Nav.Link as={Link} to="/about">
-                            About
                         </Nav.Link>
                     </Nav>
                 </Container>

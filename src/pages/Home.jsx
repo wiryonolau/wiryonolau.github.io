@@ -12,15 +12,49 @@ import {
     faEnvelope,
     faBars,
     faArrowUp,
+    faScrewdriverWrench,
+    faTimeline,
 } from "@fortawesome/free-solid-svg-icons";
 
+import Hero from "../component/home/Hero";
+import About from "../component/home/About";
+import Projects from "../component/home/Projects";
+import Skills from "../component/home/Skills";
+import Contact from "../component/home/Contact";
+import Resume from "../component/home/Resume";
 const sections = [
     { id: "hero", icon: faHouse, label: "Home" },
-    { id: "about", icon: faUser, label: "About" },
-    { id: "resume", icon: faFile, label: "Resume" },
-    { id: "portfolio", icon: faImage, label: "Portfolio" },
+    {
+        id: "about",
+        icon: faUser,
+        label: "About",
+        children: <About />,
+    },
+    {
+        id: "skills",
+        icon: faScrewdriverWrench,
+        label: "Skills",
+        children: <Skills />,
+    },
+    {
+        id: "resume",
+        icon: faTimeline,
+        label: "Resume",
+        children: <Resume />,
+    },
+    {
+        id: "projects",
+        icon: faImage,
+        label: "Projects",
+        children: <Projects />,
+    },
     { id: "services", icon: faServer, label: "Services" },
-    { id: "contact", icon: faEnvelope, label: "Contact" },
+    {
+        id: "contact",
+        icon: faEnvelope,
+        label: "Contact",
+        children: <Contact />,
+    },
 ];
 
 export default function Home() {
@@ -58,16 +92,13 @@ export default function Home() {
 
     return (
         <>
-            {/* =========================
-          DESKTOP FLOATING MENU
-      ========================= */}
             {isDesktop && (
                 <div className="floating-menu">
                     {sections.map((s) => (
                         <a
                             key={s.id}
                             href={`#${s.id}`}
-                            className={`menu-btn ${active === s.id ? "active" : ""}`}
+                            className={`round-btn sm ${active === s.id ? "active" : ""}`}
                         >
                             <FontAwesomeIcon icon={s.icon} />
                         </a>
@@ -75,14 +106,11 @@ export default function Home() {
                 </div>
             )}
 
-            {/* =========================
-          MOBILE NAV (OFFCANVAS)
-      ========================= */}
             {!isDesktop && (
                 <>
                     {/* BURGER */}
                     <Button
-                        className="burger-btn"
+                        className="round-btn burger-btn xs"
                         onClick={() => setShow(true)}
                     >
                         <FontAwesomeIcon icon={faBars} />
@@ -109,36 +137,33 @@ export default function Home() {
                             ))}
                         </Offcanvas.Body>
                     </Offcanvas>
-
-                    {/* SCROLL TOP */}
-                    <Button
-                        className="scroll-top"
-                        onClick={() =>
-                            window.scrollTo({ top: 0, behavior: "smooth" })
-                        }
-                    >
-                        <FontAwesomeIcon icon={faArrowUp} />
-                    </Button>
                 </>
             )}
+            {active != "hero" && (
+                <Button
+                    className="round-btn scroll-top xs"
+                    onClick={() =>
+                        window.scrollTo({ top: 0, behavior: "smooth" })
+                    }
+                >
+                    <FontAwesomeIcon icon={faArrowUp} />
+                </Button>
+            )}
 
-            {/* =========================
-          HERO (Bootstrap style)
-      ========================= */}
             <section id="hero" className="section hero">
                 <Container>
-                    <h1>Your Name</h1>
-                    <p>I’m Developer</p>
+                    <Hero />
                 </Container>
             </section>
 
-            {/* =========================
-          SECTIONS
-      ========================= */}
             {sections.slice(1).map((s) => (
-                <section key={s.id} id={s.id} className="section">
+                <section
+                    key={s.id}
+                    id={s.id}
+                    className={`section mb-5 ${s?.className ? s.className : ""}`}
+                >
                     <Container>
-                        <h2>{s.label}</h2>
+                        {s?.children ? s.children : <h2>{s.label}</h2>}
                     </Container>
                 </section>
             ))}

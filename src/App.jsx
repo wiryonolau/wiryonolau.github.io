@@ -10,8 +10,8 @@ import Layout from "./layout/Layout";
 import { BreakpointProvider } from "./component/Breakpoint";
 // lazy pages
 const Home = lazy(() => import("./pages/Home"));
+const Blogs = lazy(() => import("./pages/Blogs"));
 const Projects = lazy(() => import("./pages/Projects"));
-const About = lazy(() => import("./pages/About"));
 
 function ErrorPage() {
     return (
@@ -33,8 +33,8 @@ const router = createBrowserRouter([
         element: <Layout />,
         errorElement: <ErrorPage />,
         children: [
+            { path: "blogs", element: <Blogs /> },
             { path: "projects", element: <Projects /> },
-            { path: "about", element: <About /> },
         ],
     },
 ]);
