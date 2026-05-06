@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { useNavigate } from "react-router";
 import { faBook, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { ReactTyped } from "react-typed";
 
 export default function Hero() {
     const navigate = useNavigate();
@@ -11,7 +12,21 @@ export default function Hero() {
         <>
             <div>
                 <h1>Wiryono Lauw</h1>
-                <p>I&lsquo;m Fullstack Developer</p>
+                <div className="d-flex align-items-center flex-nowrap">
+                    <span>{"I\u2018m\u00A0a\u00A0"}</span>
+                    <ReactTyped
+                        className="text-primary"
+                        strings={[
+                            "Software Engineer",
+                            "DevOps Engineer",
+                            "Infrastructure Engineer",
+                            "Network Engineer",
+                        ]}
+                        typeSpeed={60}
+                        backSpeed={30}
+                        loop
+                    />
+                </div>
             </div>
             <div className="d-flex gap-2 align-items-center flex-nowrap">
                 <Button

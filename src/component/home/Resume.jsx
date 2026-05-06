@@ -36,6 +36,14 @@ const educations = [
         ],
     },
     {
+        title: "MikroTik Certified Network Associate",
+        company: "MikroTik",
+        date: "2020 - 2023",
+        description: [
+            "Fundamental networking concepts, including routing, bridging, wireless, and network management",
+        ],
+    },
+    {
         title: "Certified Data Center Professional",
         company: "EXIN",
         date: "2019 - 2022",
@@ -117,7 +125,9 @@ export default function Resume() {
             <Container>
                 <Row className="g-2">
                     <Col sm={12} md={6}>
-                        <h2>Professional Experience</h2>
+                        <h2 className="text-center mb-2">
+                            Professional Experience
+                        </h2>
                         <Container className="timeline-container">
                             {experiences.map((item, index) => (
                                 <Row key={index} className="timeline-item">
@@ -136,8 +146,10 @@ export default function Resume() {
                                             <small>{item.company}</small>
                                             <small>{item.date}</small>
                                         </div>
-                                        {item.description.map((d) => (
-                                            <div className="mb-2">{d}</div>
+                                        {item.description.map((d, i) => (
+                                            <div key={i} className="mb-2">
+                                                {d}
+                                            </div>
                                         ))}
                                     </Col>
                                 </Row>
@@ -145,13 +157,13 @@ export default function Resume() {
                         </Container>
                     </Col>
                     <Col sm={12} md={6}>
-                        <h2>Education</h2>
+                        <h2 className="text-center mb-2">Education</h2>
                         <Container className="timeline-container">
                             {educations.map((item, index) => (
                                 <Row key={index} className="timeline-item">
                                     <Col xs={2} className="timeline-left">
                                         <div className="timeline-dot"></div>
-                                        {index !== experiences.length - 1 && (
+                                        {index !== educations.length - 1 && (
                                             <div className="timeline-line"></div>
                                         )}
                                     </Col>
@@ -164,8 +176,10 @@ export default function Resume() {
                                             <small>{item.company}</small>
                                             <small>{item.date}</small>
                                         </div>
-                                        {item.description.map((d) => (
-                                            <div className="mb-2">{d}</div>
+                                        {item.description.map((d, i) => (
+                                            <div key={i} className="mb-2">
+                                                {d}
+                                            </div>
                                         ))}
                                     </Col>
                                 </Row>

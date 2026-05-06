@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, Suspense, lazy } from "react";
 import { useBreakpoint } from "../component/Breakpoint";
-import { Offcanvas, Button, Container } from "react-bootstrap";
+import { Offcanvas, Button, Container, Spinner } from "react-bootstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -17,52 +17,74 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import Hero from "../component/home/Hero";
-import About from "../component/home/About";
-import Projects from "../component/home/Projects";
-import Skills from "../component/home/Skills";
-import Contact from "../component/home/Contact";
-import Resume from "../component/home/Resume";
+
+const About = lazy(() => import("../component/home/About"));
+// Testing lazy loading
+// const About = lazy(
+//     () =>
+//         new Promise((resolve) => {
+//             setTimeout(() => {
+//                 resolve(import("../component/home/About"));
+//             }, 3000); // ⏱ 1.5s delay
+//         }),
+// );
+
+const Projects = lazy(() => import("../component/home/Projects"));
+const Skills = lazy(() => import("../component/home/Skills"));
+const Contact = lazy(() => import("../component/home/Contact"));
+const Resume = lazy(() => import("../component/home/Resume"));
+
 const sections = [
     { id: "hero", icon: faHouse, label: "Home" },
     {
         id: "about",
         icon: faUser,
         label: "About",
-        children: <About />,
+        component: About,
     },
     {
         id: "skills",
         icon: faScrewdriverWrench,
         label: "Skills",
-        children: <Skills />,
+        component: Skills,
     },
     {
         id: "resume",
         icon: faTimeline,
         label: "Resume",
-        children: <Resume />,
+        component: Resume,
     },
     {
         id: "projects",
         icon: faImage,
         label: "Projects",
-        children: <Projects />,
+        component: Projects,
     },
     { id: "services", icon: faServer, label: "Services" },
     {
         id: "contact",
         icon: faEnvelope,
         label: "Contact",
-        children: <Contact />,
+        component: Contact,
     },
 ];
 
 export default function Home() {
-    const { isMdUp } = useBreakpoint();
+    const { isSmDown, isMdUp } = useBreakpoint();
     const isDesktop = isMdUp;
 
     const [active, setActive] = useState("hero");
     const [show, setShow] = useState(false);
+
+    const sectionRefs = useRef({});
+    const [visibleMap, setVisibleMap] = useState({});
+
+    const handleNavigate = (id) => {
+        setShow(false);
+        document.getElementById(id)?.scrollIntoView({
+            behavior: "smooth",
+        });
+    };
 
     // scroll spy
     useEffect(() => {
@@ -83,12 +105,38 @@ export default function Home() {
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
-    const handleNavigate = (id) => {
-        setShow(false);
-        document.getElementById(id)?.scrollIntoView({
-            behavior: "smooth",
-        });
-    };
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    const id = entry.target.id;
+
+                    if (entry.isIntersecting) {
+                        setVisibleMap((prev) => ({
+                            ...prev,
+                            [id]: true,
+                        }));
+                    }
+                });
+            },
+            {
+                threshold: 0.1,
+                rootMargin: "300px",
+            },
+        );
+
+        // 🔥 IMPORTANT: delay to ensure refs are mounted
+        const timeout = setTimeout(() => {
+            Object.values(sectionRefs.current).forEach((el) => {
+                if (el) observer.observe(el);
+            });
+        }, 0);
+
+        return () => {
+            clearTimeout(timeout);
+            observer.disconnect();
+        };
+    }, []);
 
     return (
         <>
@@ -150,23 +198,50 @@ export default function Home() {
                 </Button>
             )}
 
-            <section id="hero" className="section hero">
+            <section
+                id="hero"
+                className="section hero"
+                style={{
+                    backgroundImage: isSmDown
+                        ? "linear-gradient(rgba(255,255,255,0.55), rgba(255,255,255,0.55)), url('hero-bg.png')"
+                        : "url('hero-bg.png')",
+                    backgroundPosition: isSmDown
+                        ? "center top"
+                        : "right center",
+                    backgroundSize: isSmDown ? "cover" : "contain",
+                    backgroundRepeat: "no-repeat",
+                }}
+            >
                 <Container>
                     <Hero />
                 </Container>
             </section>
 
-            {sections.slice(1).map((s) => (
-                <section
-                    key={s.id}
-                    id={s.id}
-                    className={`section mb-5 ${s?.className ? s.className : ""}`}
-                >
-                    <Container>
-                        {s?.children ? s.children : <h2>{s.label}</h2>}
-                    </Container>
-                </section>
-            ))}
+            {sections.slice(1).map((s) => {
+                const Component = s.component;
+
+                const isVisible = visibleMap[s.id] || active === s.id;
+                return (
+                    <section
+                        key={s.id}
+                        id={s.id}
+                        ref={(el) => (sectionRefs.current[s.id] = el)}
+                        className={`section mb-5 ${s?.className ? s.className : ""}`}
+                    >
+                        <Container>
+                            <Suspense
+                                fallback={
+                                    <div className="text-center">
+                                        <Spinner animation="border" />
+                                    </div>
+                                }
+                            >
+                                {Component ? <Component /> : <h2>{s.label}</h2>}
+                            </Suspense>
+                        </Container>
+                    </section>
+                );
+            })}
         </>
     );
 }

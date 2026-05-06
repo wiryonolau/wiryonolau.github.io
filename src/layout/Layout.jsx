@@ -32,7 +32,7 @@ export default function Layout() {
                 </Container>
             </Navbar>
 
-            <Container fluid className="p-0">
+            <Container fluid className="p-3">
                 <Suspense fallback={<Loading />}>
                     <Outlet />
                 </Suspense>

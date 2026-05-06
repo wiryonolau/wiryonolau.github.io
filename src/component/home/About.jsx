@@ -1,4 +1,4 @@
-import { Carousel } from "react-bootstrap";
+import { Carousel, Container, Row, Col } from "react-bootstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,6 +7,7 @@ import {
     faHexagonNodes,
     faNetworkWired,
     faBriefcase,
+    faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { faDocker, faGitAlt } from "@fortawesome/free-brands-svg-icons";
@@ -63,6 +64,49 @@ const about = [
     },
 ];
 
+const profiles = [
+    {
+        label: "Name",
+        value: "Wiryono Lauw",
+    },
+    {
+        label: "Email",
+        value: "wiryonolau@gmail.com",
+    },
+    {
+        label: "Birthday",
+        value: "16 August 1985",
+    },
+    {
+        label: "Age",
+        value: Math.floor((new Date() - new Date("1985-08-16")) / 31557600000),
+    },
+    {
+        label: "City",
+        value: "Surabaya, Indonesia",
+    },
+    {
+        label: "Degree",
+        value: "Bachelor of Computer Science",
+    },
+    {
+        label: "Language",
+        value: "Indonesian, Chinese, English",
+    },
+    {
+        label: "Freelance",
+        value: "Available",
+    },
+    {
+        label: "GitHub",
+        value: "github.com/wiryonolau",
+    },
+    {
+        label: "LinkedIn",
+        value: "linkedin.com/in/wpsd2006",
+    },
+];
+
 export default function About() {
     const { isSmDown } = useBreakpoint();
 
@@ -71,6 +115,34 @@ export default function About() {
     return (
         <>
             <h1 className="my-3">About</h1>
+            <Container className="mb-5">
+                <Row className="g-2">
+                    <Col xs={12} sm={3}>
+                        <img src="/profile-pic1.png" className="w-100" />
+                    </Col>
+                    <Col xs={12} sm={9} className="p-3">
+                        <Row className="gy-3">
+                            {profiles.map((p, i) => (
+                                <Col
+                                    xs={12}
+                                    sm={6}
+                                    key={i}
+                                    className={`d-flex align-items-center gap-2 ${isSmDown ? "flex-column" : "flex-nowrap"}`}
+                                >
+                                    {!isSmDown && (
+                                        <FontAwesomeIcon
+                                            icon={faAngleRight}
+                                            className="text-primary"
+                                        />
+                                    )}
+                                    <span className="fw-bold">{p.label}</span>
+                                    <span>{p.value}</span>
+                                </Col>
+                            ))}
+                        </Row>
+                    </Col>
+                </Row>
+            </Container>
             <Carousel variant="dark" controls={false}>
                 {about.map((a, i) => (
                     <Carousel.Item key={i}>
@@ -79,14 +151,16 @@ export default function About() {
                                 height,
                             }}
                         >
-                            <div className="text-center fs-2 mb-2 fw-bold">
+                            <div className="d-flex align-items-center justify-content-center fs-3 mb-2 fw-bold">
                                 <FontAwesomeIcon
                                     icon={a.icon}
                                     className="me-2"
                                 />
-                                <span>{a.title}</span>
+                                <div>{a.title}</div>
                             </div>
-                            <div className="d-flex flex-wrap  align-items-center gap-2">
+                            <div
+                                className={`d-flex align-items-center gap-2 ${isSmDown ? "flex-wrap" : ""}`}
+                            >
                                 <div
                                     className={
                                         isSmDown ? "w-100 text-center" : ""

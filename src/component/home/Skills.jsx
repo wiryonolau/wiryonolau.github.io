@@ -20,7 +20,7 @@ import {
     SiArduino,
 } from "react-icons/si";
 import { DiRedis } from "react-icons/di";
-
+import { useBreakpoint } from "../Breakpoint";
 const skills = [
     { label: "Python", icon: faPython, value: 90 },
     { label: "PHP", icon: faPhp, value: 80 },
@@ -81,6 +81,10 @@ const frameworks = [
 ];
 
 export default function Skills() {
+    const { isSmDown } = useBreakpoint();
+
+    const height = isSmDown ? "auto" : 200;
+
     return (
         <>
             <h1>Skills</h1>
@@ -105,7 +109,7 @@ export default function Skills() {
                 <Row className="g-3">
                     {frameworks.map((f, i) => (
                         <Col key={i} xs={12} sm={4}>
-                            <Card style={{ height: 200 }}>
+                            <Card style={{ height }}>
                                 <Card.Body>
                                     <Card.Title>{f.title}</Card.Title>
                                     <p>{f.description}</p>
