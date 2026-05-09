@@ -1,0 +1,1 @@
+async function e(e,t=0,n=10){let r=[],i=Object.entries(e).sort(([e],[t])=>e.localeCompare(t)).slice(t,t+n);for(let[e,t]of i){let n=await t(),i=e.split(`/`).pop().replace(`.jsx`,``);r.push({slug:i,...n.meta})}return r}export{e as t};

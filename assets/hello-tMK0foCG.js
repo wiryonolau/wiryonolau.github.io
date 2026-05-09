@@ -1,1 +1,0 @@
-var e={title:`Hello World`};function t(){return`Hello World`}export{t as default,e as meta};
