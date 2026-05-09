@@ -1,15 +1,22 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { loadPosts } from "../util";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 
 const modules = import.meta.glob("../blogs/*.jsx");
 
-const PostCard = function PostCard({ title, Content, ...props }) {
+const PostCard = function PostCard({ title, slug, short, image, ...props }) {
+    const navigate = useNavigate();
+
     return (
-        <Card>
+        <Card
+            onClick={() => navigate(`/blogs/${slug}`)}
+            style={{ height: 300, maxHeight: 300 }}
+        >
+            {image && <Card.Img variant="top" src={image} />}
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
-                <Content />
+                <div className="text-truncate">{short}</div>
             </Card.Body>
         </Card>
     );
@@ -25,7 +32,7 @@ export default function Blogs() {
     return (
         <>
             <h3 className="mb-3 text-center">Blogs</h3>
-            <Row className="g-2">
+            <Row className="g-1">
                 {posts.map((p, i) => (
                     <Col key={i} xs={12} sm={3}>
                         <PostCard {...p} />

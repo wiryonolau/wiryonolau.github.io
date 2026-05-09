@@ -1,15 +1,19 @@
-export async function loadPosts(modules) {
+export async function loadPosts(modules, offset = 0, limit = 10) {
     const posts = [];
 
-    for (const path in modules) {
-        const mod = await modules[path]();
+    const entries = Object.entries(modules)
+        .sort(([a], [b]) => a.localeCompare(b)) // optional: stable order
+        .slice(offset, offset + limit);
+
+    for (const [path, resolver] of entries) {
+        const mod = await resolver();
 
         const slug = path.split("/").pop().replace(".jsx", "");
 
         posts.push({
             slug,
             ...mod.meta,
-            Content: mod.default,
+            // Content: mod.default,
         });
     }
 

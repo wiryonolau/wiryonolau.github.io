@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 import { Spinner, Container, Navbar, Nav } from "react-bootstrap";
 import { Suspense } from "react";
 
@@ -15,17 +15,17 @@ export default function Layout() {
         <>
             <Navbar bg="primary" variant="dark">
                 <Container fluid className="px-3">
-                    <Navbar.Brand as={Link} to="/">
-                        Portfolio
+                    <Navbar.Brand as={NavLink} to="/">
+                        Wiryono Lauw
                     </Navbar.Brand>
                     <Nav>
-                        <Nav.Link as={Link} to="/">
+                        <Nav.Link as={NavLink} to="/">
                             Home
                         </Nav.Link>
-                        <Nav.Link as={Link} to="/blogs">
+                        <Nav.Link as={NavLink} to="/blogs">
                             Blogs
                         </Nav.Link>
-                        <Nav.Link as={Link} to="/projects">
+                        <Nav.Link as={NavLink} to="/projects">
                             Projects
                         </Nav.Link>
                     </Nav>

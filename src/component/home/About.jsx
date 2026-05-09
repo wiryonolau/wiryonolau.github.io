@@ -118,7 +118,7 @@ export default function About() {
             <Container className="mb-5">
                 <Row className="g-2">
                     <Col xs={12} sm={3}>
-                        <img src="/profile-pic1.png" className="w-100" />
+                        <img src="/profile-pic3.jpg" className="w-100" />
                     </Col>
                     <Col xs={12} sm={9} className="p-3">
                         <Row className="gy-3">
@@ -152,10 +152,12 @@ export default function About() {
                             }}
                         >
                             <div className="d-flex align-items-center justify-content-center fs-3 mb-2 fw-bold">
-                                <FontAwesomeIcon
-                                    icon={a.icon}
-                                    className="me-2"
-                                />
+                                {!isSmDown && (
+                                    <FontAwesomeIcon
+                                        icon={a.icon}
+                                        className="me-2"
+                                    />
+                                )}
                                 <div>{a.title}</div>
                             </div>
                             <div

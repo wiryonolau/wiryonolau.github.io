@@ -9,7 +9,9 @@ import {
     faReact,
     faFlutter,
     faPostgresql,
+    faDocker,
     faLinux,
+    faOpenai,
 } from "@fortawesome/free-brands-svg-icons";
 import {
     SiRabbitmq,
@@ -18,6 +20,8 @@ import {
     SiOpnsense,
     SiDebian,
     SiArduino,
+    SiProxmox,
+    SiCpanel,
 } from "react-icons/si";
 import { DiRedis } from "react-icons/di";
 import { useBreakpoint } from "../Breakpoint";
@@ -31,6 +35,9 @@ const skills = [
     { label: "PostgreSQL", icon: faPostgresql, value: 80 },
     { label: "RabbitMQ", icon: SiRabbitmq, value: 70 },
     { label: "Redis", icon: DiRedis, value: 70 },
+    { label: "Docker", icon: faDocker, value: 80 },
+    { label: "Proxmox", icon: SiProxmox, value: 80 },
+    { label: "cPanel", icon: SiCpanel, value: 70 },
     { label: "RouterOS", icon: SiMikrotik, value: 70 },
     {
         label: "OPNsense",
@@ -42,6 +49,7 @@ const skills = [
         icon: SiDebian,
         value: 90,
     },
+    { label: "ChatGPT", icon: faOpenai, value: 70 },
 ];
 
 const frameworks = [
@@ -91,11 +99,11 @@ export default function Skills() {
             <Container className="mb-5">
                 <Row className="g-3">
                     {skills.map((s, i) => (
-                        <Col key={i} xs={12} sm={6}>
+                        <Col key={i} xs={12} sm={4}>
                             <div className="d-flex align-items-center gap-2 mb-1">
                                 <UniversalIcon
                                     icon={s.icon}
-                                    className="fa-fw"
+                                    className="fw-icon"
                                 />
                                 <span>{s.label}</span>
                             </div>

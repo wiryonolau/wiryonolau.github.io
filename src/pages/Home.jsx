@@ -14,6 +14,7 @@ import {
     faArrowUp,
     faScrewdriverWrench,
     faTimeline,
+    faCubes,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Hero from "../component/home/Hero";
@@ -29,10 +30,11 @@ const About = lazy(() => import("../component/home/About"));
 //         }),
 // );
 
-const Projects = lazy(() => import("../component/home/Projects"));
+const Portfolio = lazy(() => import("../component/home/Portfolio"));
 const Skills = lazy(() => import("../component/home/Skills"));
 const Contact = lazy(() => import("../component/home/Contact"));
 const Resume = lazy(() => import("../component/home/Resume"));
+const Services = lazy(() => import("../component/home/Services"));
 
 const sections = [
     { id: "hero", icon: faHouse, label: "Home" },
@@ -55,12 +57,12 @@ const sections = [
         component: Resume,
     },
     {
-        id: "projects",
-        icon: faImage,
-        label: "Projects",
-        component: Projects,
+        id: "portfolio",
+        icon: faCubes,
+        label: "Portfolio",
+        component: Portfolio,
     },
-    { id: "services", icon: faServer, label: "Services" },
+    { id: "services", icon: faServer, label: "Services", component: Services },
     {
         id: "contact",
         icon: faEnvelope,

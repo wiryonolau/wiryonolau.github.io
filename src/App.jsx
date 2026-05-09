@@ -8,10 +8,14 @@ import { lazy } from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import Layout from "./layout/Layout";
 import { BreakpointProvider } from "./component/Breakpoint";
+import { LanguageContextProvider } from "./component/Language";
+
 // lazy pages
 const Home = lazy(() => import("./pages/Home"));
 const Blogs = lazy(() => import("./pages/Blogs"));
 const Projects = lazy(() => import("./pages/Projects"));
+const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
+const BlogDetail = lazy(() => import("./pages/BlogDetail"));
 
 function ErrorPage() {
     return (
@@ -34,15 +38,28 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
         children: [
             { path: "blogs", element: <Blogs /> },
-            { path: "projects", element: <Projects /> },
+            {
+                path: "blogs/:slug",
+                element: <BlogDetail />,
+            },
+            {
+                path: "projects",
+                element: <Projects />,
+            },
+            {
+                path: "projects/:slug",
+                element: <ProjectDetail />,
+            },
         ],
     },
 ]);
 
 export default function App() {
     return (
-        <BreakpointProvider>
-            <RouterProvider router={router} />
-        </BreakpointProvider>
+        <LanguageContextProvider>
+            <BreakpointProvider>
+                <RouterProvider router={router} />
+            </BreakpointProvider>
+        </LanguageContextProvider>
     );
 }
