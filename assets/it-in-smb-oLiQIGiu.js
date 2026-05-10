@@ -1,4 +1,4 @@
-import{t as e}from"./jsx-runtime-BOY_dY-B.js";import{t}from"./Carousel-TEJKOTBE.js";import{n,t as r}from"./Row-D-JWmvFR.js";import{w as i}from"./index--jH2DdcL.js";import"./free-solid-svg-icons-DLsDCzTo.js";i();var a=e(),o=[{title:`IT is seen as cost`,text:`
+import{t as e}from"./jsx-runtime-BOY_dY-B.js";import{t}from"./Carousel-B4t4775K.js";import{t as n}from"./index-1KjIh1il.js";var r=e(),i=[{title:`IT is seen as cost`,text:`
         IT is commonly seen as a cost. 
         And honestly, that’s true.
         
@@ -357,5 +357,5 @@ import{t as e}from"./jsx-runtime-BOY_dY-B.js";import{t}from"./Carousel-TEJKOTBE.
         Short-term flexibility, or long-term structure.
         
         And this is where the difference between using a tool and building a system becomes more visible.
-        `}],s={title:`IT in SMB`,slug:`it-in-smb`,short:`What Actually Happens vs What We Think`};function c(){let e=o.length;return(0,a.jsxs)(a.Fragment,{children:[(0,a.jsxs)(`div`,{className:`fs-2 fw-bold text-center mb-3`,children:[`IT in SMB`,(0,a.jsx)(`br`,{}),`What Actually Happens vs What We Think`]}),(0,a.jsx)(t,{variant:`dark`,controls:!1,children:o.map((i,o)=>{let s=i.text.replace(/\\n/g,`
-`).trim();return(0,a.jsxs)(t.Item,{style:{height:`auto`},className:`bg-light bg-gradient rounded p-3`,children:[(0,a.jsx)(`div`,{className:`mb-3 fs-3 fw-bold text-center`,children:`${o+1}/${e} - ${i.title}`}),(0,a.jsxs)(r,{className:`gy-3 gx-3`,children:[(0,a.jsx)(n,{sm:12,md:5,className:`text-center`,children:(0,a.jsx)(`img`,{src:`/blogs/it-in-smb/${o+1}.webp`,style:{height:500}})}),(0,a.jsx)(n,{sm:12,md:7,children:(0,a.jsx)(`div`,{style:{whiteSpace:`pre-line`,height:600},children:s})})]})]},o)})})]})}export{c as default,s as meta};
+        `}],a={title:`IT in SMB`,slug:`it-in-smb`,short:`What Actually Happens vs What We Think`};function o(){let e=i.length,{isSmDown:a,isMdDown:o}=n();return(0,r.jsxs)(r.Fragment,{children:[(0,r.jsxs)(`div`,{className:`fs-2 fw-bold text-center mb-3`,children:[`IT in SMB`,(0,r.jsx)(`br`,{}),`What Actually Happens vs What We Think`]}),(0,r.jsx)(t,{variant:`dark`,controls:!1,children:i.map((n,i)=>{let o=n.text.replace(/\\n/g,`
+`).trim();return(0,r.jsxs)(t.Item,{style:{height:`auto`},className:`bg-light bg-gradient rounded p-3`,children:[(0,r.jsx)(`div`,{className:`mb-3 fs-3 fw-bold text-center`,children:`${i+1}/${e} - ${n.title}`}),(0,r.jsxs)(`div`,{className:`d-flex align-items-start justify-content-center gap-3 ${a?`flex-column`:``}`,children:[(0,r.jsx)(`div`,{className:`text-center ${a?`w-100`:``}`,children:(0,r.jsx)(`img`,{src:`/blogs/it-in-smb/${i+1}.webp`,style:{width:200}})}),(0,r.jsx)(`div`,{style:{whiteSpace:`pre-line`,height:600},children:o})]})]},i)})})]})}export{o as default,a as meta};
