@@ -2,16 +2,20 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 import { loadPosts } from "../util";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import { useBreakpoint } from "../component/Breakpoint";
 
 const modules = import.meta.glob("../projects/*.jsx");
 
 const PostCard = function PostCard({ title, slug, short, image, ...props }) {
     const navigate = useNavigate();
+    const { isSmDown } = useBreakpoint();
+
+    const height = isSmDown ? "auto" : 300;
 
     return (
         <Card
             onClick={() => navigate(`/projects/${slug}`)}
-            style={{ height: 300, maxHeight: 300 }}
+            style={{ height: height, maxHeight: height }}
         >
             {image && <Card.Img variant="top" src={image} />}
             <Card.Body>

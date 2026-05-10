@@ -192,9 +192,10 @@ export default function Home() {
             {active != "hero" && (
                 <Button
                     className="round-btn scroll-top xs"
-                    onClick={() =>
-                        window.scrollTo({ top: 0, behavior: "smooth" })
-                    }
+                    onClick={(e) => {
+                        e.currentTarget.blur();
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
                 >
                     <FontAwesomeIcon icon={faArrowUp} />
                 </Button>

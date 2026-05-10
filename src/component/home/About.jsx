@@ -108,9 +108,9 @@ const profiles = [
 ];
 
 export default function About() {
-    const { isSmDown } = useBreakpoint();
+    const { isSmDown, isXs, isSm, isMd, isLg, isMdUp } = useBreakpoint();
 
-    const height = isSmDown ? 760 : 300;
+    const height = isLg ? 300 : isMd ? 360 : isSm ? 560 : 760;
 
     return (
         <>
@@ -127,16 +127,20 @@ export default function About() {
                                     xs={12}
                                     sm={6}
                                     key={i}
-                                    className={`d-flex align-items-center gap-2 ${isSmDown ? "flex-column" : "flex-nowrap"}`}
+                                    className={`d-flex align-items-center gap-2 ${isSm ? "flex-column" : ""}`}
                                 >
-                                    {!isSmDown && (
+                                    {isMdUp && (
                                         <FontAwesomeIcon
                                             icon={faAngleRight}
                                             className="text-primary"
                                         />
                                     )}
-                                    <span className="fw-bold">{p.label}</span>
-                                    <span>{p.value}</span>
+                                    <span className="fw-bold text-start">
+                                        {p.label}
+                                    </span>
+                                    <span className="text-start">
+                                        {p.value}
+                                    </span>
                                 </Col>
                             ))}
                         </Row>

@@ -47,7 +47,7 @@ export default function Portfolio() {
             <Col xs={12} sm={9}>
                 <Row className="g-2">
                     {posts.map((p, i) => (
-                        <Col key={i} xs={12} sm={3}>
+                        <Col key={i} xs={12} sm={12} md={6} lg={4}>
                             <PostCard {...p} />
                         </Col>
                     ))}

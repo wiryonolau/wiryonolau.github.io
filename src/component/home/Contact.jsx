@@ -25,8 +25,8 @@ export default function Contact() {
 
     return (
         <Container>
-            <Row className="gy-5">
-                <Col xs={12} sm={3}>
+            <Row className="gy-3">
+                <Col xs={12} sm={4}>
                     <h1>Contact</h1>
                     <div className="d-flex align-items-center gap-2">
                         <FontAwesomeIcon icon={faEnvelope} />
@@ -38,7 +38,7 @@ export default function Contact() {
                         </a>
                     </div>
                 </Col>
-                <Col xs={12} sm={9}>
+                <Col xs={12} sm={8}>
                     <Form onSubmit={handleSubmit}>
                         <div className="d-flex flex-column justify-content-center gap-3">
                             <div

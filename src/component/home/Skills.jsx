@@ -89,9 +89,9 @@ const frameworks = [
 ];
 
 export default function Skills() {
-    const { isSmDown } = useBreakpoint();
+    const { isXs, isSm, isMd, isLg, isSmDown, isMdDown } = useBreakpoint();
 
-    const height = isSmDown ? "auto" : 200;
+    const height = isLg ? 200 : isMd ? 250 : isSm ? 250 : "auto";
 
     return (
         <>
@@ -116,7 +116,7 @@ export default function Skills() {
             <Container>
                 <Row className="g-3">
                     {frameworks.map((f, i) => (
-                        <Col key={i} xs={12} sm={4}>
+                        <Col key={i} xs={12} sm={6} md={4}>
                             <Card style={{ height }}>
                                 <Card.Body>
                                     <Card.Title>{f.title}</Card.Title>
