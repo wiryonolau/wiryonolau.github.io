@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-BOY_dY-B.js";import{n as t,t as n}from"./Row-DjlN00Yk.js";var r=e();function i(){return(0,r.jsxs)(n,{className:`align-items-center`,children:[(0,r.jsx)(t,{xs:12,sm:3,children:(0,r.jsx)(`h1`,{children:`Services`})}),(0,r.jsx)(t,{xs:12,sm:9,children:`Coming soon`})]})}export{i as default};
