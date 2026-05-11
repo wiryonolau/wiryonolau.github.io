@@ -1,5 +1,5 @@
 import {
-    createBrowserRouter,
+    createHashRouter,
     RouterProvider,
     Outlet,
     Link,
@@ -26,7 +26,7 @@ function ErrorPage() {
 }
 
 // router
-const router = createBrowserRouter([
+const router = createHashRouter([
     {
         path: "/",
         element: <Outlet />,

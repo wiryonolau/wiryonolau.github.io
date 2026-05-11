@@ -1,5 +1,5 @@
 import { Row, Col, Button, Carousel } from "react-bootstrap";
-import GoToTopButton from "../component/GoToTopButton";
+import { useBreakpoint } from "../component/Breakpoint";
 
 const sections = [
     {
@@ -452,6 +452,8 @@ export const meta = {
 export default function Content() {
     const total = sections.length;
 
+    const { isSmDown, isMdDown } = useBreakpoint();
+
     return (
         <>
             <div className="fs-2 fw-bold text-center mb-3">
@@ -469,24 +471,28 @@ export default function Content() {
                             className="bg-light bg-gradient rounded p-3"
                         >
                             <div className="mb-3 fs-3 fw-bold text-center">{`${i + 1}/${total} - ${s.title}`}</div>
-                            <Row className="gy-3 gx-3">
-                                <Col sm={12} md={5} className="text-center">
+                            <div
+                                className={`d-flex align-items-start justify-content-center gap-3 ${isSmDown ? "flex-column" : ""}`}
+                            >
+                                <div
+                                    className={`text-center ${isSmDown ? "w-100" : ""}`}
+                                >
                                     <img
                                         src={`/blogs/it-in-smb/${i + 1}.webp`}
-                                        style={{ height: 500 }}
-                                    />
-                                </Col>
-                                <Col sm={12} md={7}>
-                                    <div
                                         style={{
-                                            whiteSpace: "pre-line",
-                                            height: 600,
+                                            width: 200,
                                         }}
-                                    >
-                                        {text}
-                                    </div>
-                                </Col>
-                            </Row>
+                                    />
+                                </div>
+                                <div
+                                    style={{
+                                        whiteSpace: "pre-line",
+                                        height: 600,
+                                    }}
+                                >
+                                    {text}
+                                </div>
+                            </div>
                         </Carousel.Item>
                     );
                 })}

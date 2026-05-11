@@ -20,7 +20,16 @@ const PostCard = function PostCard({ title, slug, short, image, ...props }) {
             {image && <Card.Img variant="top" src={image} />}
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
-                <div className="text-truncate">{short}</div>
+                <div
+                    style={{
+                        overflow: "hidden",
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 4,
+                    }}
+                >
+                    {short}
+                </div>
             </Card.Body>
         </Card>
     );
@@ -38,7 +47,7 @@ export default function Projects() {
             <h3 className="mb-3 text-center">Projects</h3>
             <Row className="g-1">
                 {posts.map((p, i) => (
-                    <Col key={i} xs={12} sm={3}>
+                    <Col key={i} sm={12} md={6}>
                         <PostCard {...p} />
                     </Col>
                 ))}

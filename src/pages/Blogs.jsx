@@ -3,6 +3,8 @@ import { loadPosts } from "../util";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useBreakpoint } from "../component/Breakpoint";
+import MonetagAd from "../component/MonetagAd";
+
 const modules = import.meta.glob("../blogs/*.jsx");
 
 const PostCard = function PostCard({ title, slug, short, image, ...props }) {
@@ -10,7 +12,7 @@ const PostCard = function PostCard({ title, slug, short, image, ...props }) {
 
     const { isSmDown } = useBreakpoint();
 
-    const height = isSmDown ? "auto" : 300;
+    const height = isSmDown ? "auto" : 150;
 
     return (
         <Card
@@ -20,7 +22,16 @@ const PostCard = function PostCard({ title, slug, short, image, ...props }) {
             {image && <Card.Img variant="top" src={image} />}
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
-                <div className="text-truncate">{short}</div>
+                <div
+                    style={{
+                        overflow: "hidden",
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 4,
+                    }}
+                >
+                    {short}
+                </div>
             </Card.Body>
         </Card>
     );
@@ -35,6 +46,7 @@ export default function Blogs() {
 
     return (
         <>
+            <MonetagAd />
             <h3 className="mb-3 text-center">Blogs</h3>
             <Row className="g-1">
                 {posts.map((p, i) => (

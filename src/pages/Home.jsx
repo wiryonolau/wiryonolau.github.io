@@ -147,8 +147,12 @@ export default function Home() {
                     {sections.map((s) => (
                         <a
                             key={s.id}
-                            href={`#${s.id}`}
                             className={`round-btn sm ${active === s.id ? "active" : ""}`}
+                            onClick={() => {
+                                document
+                                    .getElementById(s.id)
+                                    ?.scrollIntoView({ behavior: "smooth" });
+                            }}
                         >
                             <FontAwesomeIcon icon={s.icon} />
                         </a>
