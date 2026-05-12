@@ -1,4 +1,4 @@
-import{t as e}from"./jsx-runtime-BOY_dY-B.js";import{t}from"./Carousel-nE8b3XqP.js";import{t as n}from"./index-DgNHM2f1.js";var r=e(),i=[{title:`IT is seen as cost`,text:`
+import{t as e}from"./jsx-runtime-BOY_dY-B.js";import{t}from"./Carousel-B1chghqn.js";import{t as n}from"./index-PhK3lxvu.js";var r=e(),i=[{title:`IT is seen as cost`,text:`
         IT is commonly seen as a cost. 
         And honestly, that’s true.
         
