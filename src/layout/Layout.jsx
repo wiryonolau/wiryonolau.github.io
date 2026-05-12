@@ -1,6 +1,7 @@
 import { Outlet, NavLink } from "react-router-dom";
 import { Spinner, Container, Navbar, Nav } from "react-bootstrap";
 import { Suspense } from "react";
+import { AdsterraBanner } from "../component/AdsterraAd";
 
 function Loading() {
     return (
@@ -32,11 +33,17 @@ export default function Layout() {
                 </Container>
             </Navbar>
 
-            <Container className="p-3">
+            <Container className="p-3" style={{ marginBottom: 65 }}>
                 <Suspense fallback={<Loading />}>
                     <Outlet />
                 </Suspense>
             </Container>
+            <AdsterraBanner
+                height={60}
+                width={468}
+                adsId="2976ec362c4f609ac16c497d1ccd6c37"
+                allowedHosts={["wiryonolau.github.io"]}
+            />
         </>
     );
 }

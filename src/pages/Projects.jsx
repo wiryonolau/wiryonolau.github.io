@@ -10,7 +10,7 @@ const PostCard = function PostCard({ title, slug, short, image, ...props }) {
     const navigate = useNavigate();
     const { isSmDown } = useBreakpoint();
 
-    const height = isSmDown ? "auto" : 300;
+    const height = isSmDown ? "auto" : 150;
 
     return (
         <Card

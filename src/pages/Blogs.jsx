@@ -3,7 +3,6 @@ import { loadPosts } from "../util";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useBreakpoint } from "../component/Breakpoint";
-import MonetagAd from "../component/MonetagAd";
 
 const modules = import.meta.glob("../blogs/*.jsx");
 
@@ -46,7 +45,6 @@ export default function Blogs() {
 
     return (
         <>
-            <MonetagAd />
             <h3 className="mb-3 text-center">Blogs</h3>
             <Row className="g-1">
                 {posts.map((p, i) => (
