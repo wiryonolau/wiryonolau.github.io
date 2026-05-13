@@ -147,42 +147,39 @@ export default function About() {
                     </Col>
                 </Row>
             </Container>
-            <Carousel variant="dark" controls={false}>
+            <Carousel
+                variant="dark"
+                controls={false}
+                className="h-100 pb-5"
+                style={{ minHeight: height }}
+            >
                 {about.map((a, i) => (
-                    <Carousel.Item key={i}>
+                    <Carousel.Item key={i} className="h-100">
+                        <div className="d-flex align-items-center justify-content-center fs-3 mb-2 fw-bold">
+                            {!isSmDown && (
+                                <FontAwesomeIcon
+                                    icon={a.icon}
+                                    className="me-2"
+                                />
+                            )}
+                            <div>{a.title}</div>
+                        </div>
                         <div
-                            style={{
-                                height,
-                            }}
+                            className={`d-flex align-items-center gap-2 ${isSmDown ? "flex-wrap" : ""}`}
                         >
-                            <div className="d-flex align-items-center justify-content-center fs-3 mb-2 fw-bold">
-                                {!isSmDown && (
-                                    <FontAwesomeIcon
-                                        icon={a.icon}
-                                        className="me-2"
-                                    />
-                                )}
-                                <div>{a.title}</div>
-                            </div>
                             <div
-                                className={`d-flex align-items-center gap-2 ${isSmDown ? "flex-wrap" : ""}`}
+                                className={isSmDown ? "w-100 text-center" : ""}
                             >
-                                <div
-                                    className={
-                                        isSmDown ? "w-100 text-center" : ""
-                                    }
-                                >
-                                    <img
-                                        width="192"
-                                        height="192"
-                                        className="p-0 m-0"
-                                        src={a.image}
-                                    />
-                                </div>
-                                <p className={isSmDown ? "text-center" : ""}>
-                                    {a.description}
-                                </p>
+                                <img
+                                    width="192"
+                                    height="192"
+                                    className="p-0 m-0"
+                                    src={a.image}
+                                />
                             </div>
+                            <p className={isSmDown ? "text-center" : ""}>
+                                {a.description}
+                            </p>
                         </div>
                     </Carousel.Item>
                 ))}

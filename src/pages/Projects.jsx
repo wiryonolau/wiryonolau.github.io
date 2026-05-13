@@ -10,12 +10,10 @@ const PostCard = function PostCard({ title, slug, short, image, ...props }) {
     const navigate = useNavigate();
     const { isSmDown } = useBreakpoint();
 
-    const height = isSmDown ? "auto" : 150;
-
     return (
         <Card
+            className="flex-fill"
             onClick={() => navigate(`/projects/${slug}`)}
-            style={{ height: height, maxHeight: height }}
         >
             {image && <Card.Img variant="top" src={image} />}
             <Card.Body>
@@ -47,7 +45,7 @@ export default function Projects() {
             <h3 className="mb-3 text-center">Projects</h3>
             <Row className="g-1">
                 {posts.map((p, i) => (
-                    <Col key={i} sm={12} md={6}>
+                    <Col key={i} sm={12} md={6} className="d-flex">
                         <PostCard {...p} />
                     </Col>
                 ))}

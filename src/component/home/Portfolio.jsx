@@ -9,6 +9,7 @@ const PostCard = function PostCard({ title, slug, short, image, ...props }) {
     const navigate = useNavigate();
     return (
         <Card
+            className="flex-fill"
             onClick={() => {
                 if (slug) {
                     navigate(`/projects/${slug}`);
@@ -47,7 +48,14 @@ export default function Portfolio() {
             <Col xs={12} sm={9}>
                 <Row className="g-2">
                     {posts.map((p, i) => (
-                        <Col key={i} xs={12} sm={12} md={6} lg={4}>
+                        <Col
+                            key={i}
+                            xs={12}
+                            sm={12}
+                            md={6}
+                            lg={4}
+                            className="d-flex"
+                        >
                             <PostCard {...p} />
                         </Col>
                     ))}
