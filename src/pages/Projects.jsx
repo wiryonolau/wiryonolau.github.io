@@ -43,7 +43,7 @@ export default function Projects() {
     return (
         <>
             <h3 className="mb-3 text-center">Projects</h3>
-            <Row className="g-1">
+            <Row className="gx-2 gy-2">
                 {posts.map((p, i) => (
                     <Col key={i} sm={12} md={6} className="d-flex">
                         <PostCard {...p} />

@@ -39,8 +39,6 @@ export const AdsterraBanner = function AdsterraBanner({
 }) {
     const allowed = isAllowedHost(allowedHosts);
 
-    const { isSmDown } = useBreakpoint();
-
     const containerId = useMemo(
         () => `adsterra-banner-${Math.random().toString(36).slice(2)}`,
         [],
@@ -106,8 +104,6 @@ export const AdsterraBanner = function AdsterraBanner({
     }, [allowed, adsId, width, height, containerId]);
 
     if (!allowed) return null;
-
-    if (isSmDown) return null;
 
     return (
         <Container

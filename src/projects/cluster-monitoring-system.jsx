@@ -1,0 +1,23 @@
+export const meta = {
+    title: "Cluster Monitoring System",
+    slug: "cluster-monitoring-system",
+    short: "Distributed real time cluster monitoring platform for large scale Linux compute environments.",
+};
+
+export const content = {
+    objective: `
+Develop a scalable real time monitoring platform capable of observing and managing large scale Linux based compute clusters across multiple sites with centralized visibility, rapid status updates, and efficient operational troubleshooting.
+  `,
+
+    approach: `
+Designed a distributed monitoring architecture where polling and command execution are performed locally within each site to minimize latency, reduce centralized network overhead, and improve responsiveness. The system prioritizes live operational visibility over delayed batch reporting, enabling infrastructure operators to quickly identify issues across hundreds of nodes. Lightweight open source technologies and asynchronous processing were used to maximize scalability and maintain low resource consumption.
+  `,
+
+    implementation: `
+Built the backend using Python with aiohttp and asyncio to support highly concurrent monitoring workloads across more than 100 compute nodes simultaneously. Implemented continuous batch based polling using SSH driven command execution with configurable command templates assigned dynamically per node group. Integrated Redis as a message queue layer to distribute monitoring workloads and synchronize realtime updates between services. Designed the system to collect metrics including CPU, RAM, GPU, disk usage, service availability, and additional custom operational data. Monitoring data is streamed in realtime to the web dashboard using Server Sent Events (SSE), allowing multiple monitoring clients within the LAN to receive synchronized updates with status propagation typically below 5 seconds. Historical metric storage and charting capabilities are implemented using TimescaleDB. The platform runs entirely on Linux infrastructure using Docker based deployment and supports grouped node filtering, centralized visibility, and lightweight role based access management over VPN secured environments.
+  `,
+
+    outcome: `
+Delivered a realtime monitoring platform capable of efficiently managing large distributed Linux environments with significantly improved operational visibility and troubleshooting efficiency. The system reduced issue identification time from days to hours by providing centralized live monitoring, grouped infrastructure views, and rapid node status propagation. The scalable asynchronous architecture also enabled efficient monitoring of hundreds of nodes while maintaining low latency and manageable infrastructure overhead.
+  `,
+};

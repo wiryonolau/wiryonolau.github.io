@@ -1,0 +1,25 @@
+export const meta = {
+    title: "Legacy Application Remote Access",
+    slug: "legacy-application-remote-access",
+    short: "Secure remote access environment for legacy accounting and government related desktop applications with licensing and database limitations.",
+};
+
+export const content = {
+    objective: `
+Provide secure and practical remote access for legacy accounting and government related desktop applications that were originally designed for local single machine operation and could not be migrated to modern web based systems due to licensing, database, and regulatory constraints.
+  `,
+
+    approach: `
+Implemented a centralized remote access environment allowing administrators and operators to securely access legacy applications from remote locations while preserving compatibility with existing software and hardware requirements. The solution prioritized fast deployment, low operational cost, and minimal modification to the original applications by leveraging lightweight remote access technologies and VPN based connectivity. Open source tooling was selected to simplify infrastructure management and support deployment in environments with limited bandwidth availability.
+  `,
+
+    implementation: `
+Configured centralized application environments running on both Linux and Windows systems depending on software compatibility requirements. Legacy applications included accounting and government tax related software requiring USB dongle authentication and Microsoft Access based databases with single session limitations. Since the underlying database architecture only allowed one active session at a time, session handling was designed so that new remote connections would replace previous sessions when required.
+
+Implemented secure remote connectivity using OpenVPN combined with remote desktop technologies including RDP, VNC, and RustDesk depending on deployment requirements and compatibility constraints. RustDesk was utilized for rapid deployment and simplified remote support workflows, while OpenVPN based access provided encrypted network level connectivity suitable for low bandwidth environments. Linux based deployments commonly utilized lightweight headless Debian environments with Openbox to reduce resource consumption while maintaining operational usability. Access control relied on standard PAM authentication and native Windows user management combined with firewall restrictions and VPN based isolation.
+  `,
+
+    outcome: `
+Delivered a secure and reliable remote access solution enabling multiple administrators to access critical legacy business applications from remote locations without requiring software migration or infrastructure replacement. The system significantly reduced the need for physical on site access while preserving compatibility with restrictive licensing mechanisms and database limitations. By centralizing application access and leveraging lightweight remote access technologies, the solution improved operational flexibility, simplified remote administration, and extended the usable lifespan of critical legacy systems within cost sensitive environments.
+  `,
+};

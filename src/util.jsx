@@ -33,3 +33,7 @@ export const loadPosts = async function loadPosts(
 
     return posts;
 };
+
+export const capitalized = function captialized(str) {
+    return `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
+};

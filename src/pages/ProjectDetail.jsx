@@ -1,27 +1,38 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import { ProjectTemplate } from "../component/Template";
 const projects = import.meta.glob("../projects/*.jsx");
 
 export default function ProjectDetail() {
     const { slug } = useParams();
 
-    const [Component, setComponent] = useState(null);
+    const [project, setProject] = useState(null);
 
     useEffect(() => {
         const loader = projects[`../projects/${slug}.jsx`];
 
         if (!loader) {
-            setComponent(() => () => <div>Not found</div>);
+            setProject({
+                meta: {
+                    title: "Not found",
+                },
+                content: <div>Project not found</div>,
+            });
+
             return;
         }
 
         loader().then((module) => {
-            setComponent(() => module.default);
+            setProject({
+                meta: module.meta,
+                content: module.content,
+            });
         });
     }, [slug]);
 
-    if (!Component) return <div>Loading...</div>;
+    if (!project) return <div>Loading...</div>;
 
-    return <Component />;
+    return (
+        <ProjectTemplate title={project.meta.title} content={project.content} />
+    );
 }
